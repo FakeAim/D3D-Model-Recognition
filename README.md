@@ -9,7 +9,11 @@ DirectX generally provides several different interfaces to the game, which are u
 
 Model Recognition is generally used to create wallhack, which allows players to become visible through walls. 
 
-The DirectX function known as DrawIndexedPrimitive can be used with Model Recognition to produce a wallhack effect. 
+The DirectX function known as DrawIndexedPrimitive (DIP) can be used with Model Recognition to produce a wallhack effect. 
+
+The values in the header files found in the header files for these games equate to the values passed to the DIP function at run-time. 
+
+
 
 
 
