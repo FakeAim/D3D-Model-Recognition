@@ -2,8 +2,12 @@
 ** Game Name: Day Of Defeat Source / DODS
 ** File Name: DayOfDefeatSource.h
 ** Author: Calvin Hartwell (http://FakeAim.com)
-** Description: Model Recognition for Day Of Defeat Source 
+** Description: Model Recognition for Day Of Defeat Source
+** 				Players are all drawn on the same stride, the game has multiple
+** 				DOF (Depths of field) and so there are multiple values per player. 
 */
+
+#define PLAYERS (ALLIED_PLAYERS || AXIS_PLAYERS)
 
 #define ALLIED_PLAYERS ( mStride == 64 && (GARAND_PLAYER || THOMPSON_PLAYER || SNIPER_PLAYER || MG_PLAYER || BAR_PLAYER || BAZOOKA_PLAYER)) 
 #define GARAND_PLAYER ((NumVertices == 75  && primCount == 96) || (NumVertices == 628 && primCount == 670) || (NumVertices == 976 && primCount == 1348) || (NumVertices == 843 && primCount == 960) || (NumVertices == 976 && primCount == 1348) || (NumVertices == 1509 && primCount == 1348) || (NumVertices == 1509 && primCount == 1564) || (NumVertices == 976 && primCount == 1348) || (NumVertices == 546 && primCount == 658)) 
