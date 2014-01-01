@@ -1,13 +1,19 @@
 /*
 ** Game Name: Counter Strike Global Offensive
 ** File Name: CSGO.h
-** Author: 100Proof
+** Author: Calvin Hartwell, 100Proof
 ** Description: Model Recognition for Counter-Strike Global Offensive 
 ** 				Players are all drawn on the same mStride, the game has multiple
 ** 				DOF (Depths of field) and so there are multiple values per player. 
 *"
 */ 
 
+
+// Update 31st December 2013: 
+// Use this to catch everything, it's pretty ghetto but the old model rec doesn't cover all the new game textures. 
+// This needs fixing for new model rec, but I'm too lazy to log it all. 
+// in DrawIndexedPrimitive do: if(ALL_PLAYER_ENTS)  { disable z buffer/wallhack code; }
+#define ALL_PLAYER_ENTS (WEP || T || CT || (g_uiStride == 32 && NumVertices >= 870 &&  NumVertices <= 5500 &&  primCount >= 1630 && primCount <= 8600)
 
 #define PLAYERS (T | CT)
 #define T ((mStride == 32 && NumVertices == 1430 && primCount == 2422 ) || (mStride == 32 && NumVertices == 2414 && primCount == 3778 ) || (mStride == 32 && NumVertices == 2578 && primCount == 4334 ) || (mStride == 32 && NumVertices == 3816 && primCount == 5930 ) || (mStride == 32 && NumVertices == 1887 && primCount == 3088 ) || (mStride == 32 && NumVertices == 1310 && primCount == 2302 ) || (mStride == 32 && NumVertices == 1986 && primCount == 3044 ) || (mStride == 32 && NumVertices == 3162 && primCount == 5182 ) || (mStride == 32 && NumVertices == 1372 && primCount == 2286 ) || (mStride == 32 && NumVertices == 1352 && primCount == 2268 ) || (mStride == 32 && NumVertices == 2587 && primCount == 4334 ) || (mStride == 32 && NumVertices == 2136 && primCount == 3424 ) || (mStride == 32 && NumVertices == 1134 && primCount == 2024 ) || (mStride == 32 && NumVertices == 3606 && primCount == 5856 ) || (mStride == 32 && NumVertices == 2529 && primCount == 3888 ) || (mStride == 32 && NumVertices == 876 && primCount == 1630 ) || (mStride == 32 && NumVertices == 2944 && primCount == 4916 ) || (mStride == 32 && NumVertices == 2593 && primCount == 4097 ) || (mStride == 32 && NumVertices == 1345 && primCount == 2488 ) || (mStride == 32 && NumVertices == 1273 && primCount == 2113 ) || (mStride == 32 && NumVertices == 5468 && primCount == 8542 ) || (mStride == 32 && NumVertices == 1215 && primCount == 2286 ) || (mStride == 32 && NumVertices == 1624 && primCount == 2936 ) || (mStride == 32 && NumVertices == 1214 && primCount == 2292 ) || (mStride == 32 && NumVertices == 1291 && primCount == 2437 ))
