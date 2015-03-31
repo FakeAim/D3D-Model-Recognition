@@ -1,18 +1,32 @@
-Model Recognition / Model Rec
+DirectX Wallhack Model Recognition
+====================================
+
+This repository contains C++ headers with Model Recognition values for many well known games. 
+
+By hooking methods, such as DrawIndexedPrimitive which are part of the D3D interface and using the model recognition values, it is possible to disable the depth buffer for the specific models, granting the player the ability to see them through walls (wallhack). 
+
+More information on the IDirect3DDevice9 interface can be found here on MSDN: 
+
+	https://msdn.microsoft.com/en-us/library/windows/desktop/bb174369%28v=vs.85%29.aspx
+	
+For Windows games, the modification can be done in many ways, but it is usually done with an injected DLL module. 
+
+How to use the headers
 =============================
 
-These values are used to create game hacks by modifying the video driver of the target video game. 
+Import the specific header to your C++ project and use the values within your hooked DIP function. Here is some pseudo code: 
 
-For Windows games, this is usually done by modifying DirectX, which is loaded by the game through a DLL.
+function Hooked_DIP(X, NumberOfVerticies, PrimitiveCount) {
+	if(strideValue == player_stride && PrimitiveCount == player_primeCount && NumberOfVerticies == player_numVerts) {
+		disable(depth_buffer)
+	}
+	
+	return Original_DIP(X, NumberOfVerticies, PrimitiveCount); 
+}
 
-DirectX generally provides several different interfaces to the game, which are used for rendering. 
+The code above is not complete, it will require some research to make it work. More importantly the syntax is not correct and nor does it have the correct function names. 
 
-Model Recognition is generally used to create wallhack, which allows players to become visible through walls. 
-
-The DirectX function known as DrawIndexedPrimitive (DIP) can be used with Model Recognition to produce a wallhack effect. 
-
-The values in the header files found in the header files for these games equate to the values passed to the DIP function at run-time. 
-
+A good starting point to learn how to hook the D3D interface is to find Azorbix's D3D starter kit, which was widely used around 2006-2010. 
 
 
 
